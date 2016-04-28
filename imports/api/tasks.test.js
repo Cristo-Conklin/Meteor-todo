@@ -1,8 +1,8 @@
-/* eslint-env mocha */
 
 import {
     Meteor
 } from 'meteor/meteor';
+
 import {
     Random
 } from 'meteor/random';
