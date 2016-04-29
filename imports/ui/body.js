@@ -14,26 +14,28 @@ import './body.html';
 Template.body.onCreated(function bodyOnCreated() {
     this.state = new ReactiveDict();
     Session.set("PrioritySort", 1);
+    Session.set("Search", "");
     Meteor.subscribe('tasks');
 });
 
 Template.body.helpers({
     tasks() {
         const instance = Template.instance();
+        var query = {};
+
         if (instance.state.get('hideCompleted')) {
             // If hide completed is checked, filter tasks
-            return Tasks.find({
-                checked: {
+            query['checked'] = {
                     $ne: true
-                }
-            }, {
-                sort: {
-                    priority: Session.get("PrioritySort") //, createdAt: -1,
-                }
-            });
+                };
         }
+
+        if (Session.get("Search") != ""){
+          query.text = {'$regex': Session.get("Search")}; /.*Session.get("Search").*/
+        }
+
         // Otherwise, return all of the tasks
-        return Tasks.find({}, {
+        return Tasks.find(query, {
             sort: {
                 priority: Session.get("PrioritySort") //, createdAt: -1,
             }
@@ -70,4 +72,8 @@ Template.body.events({
     'change .hide-completed input' (event, instance) {
         instance.state.set('hideCompleted', event.target.checked);
     },
+    'keyup .search-task'  (event) {
+//console.log(event.target, event.target.text, $('.search-task').val());
+        Session.set('Search', $('.search-task').val());
+    }
 });

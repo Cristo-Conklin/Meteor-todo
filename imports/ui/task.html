@@ -14,19 +14,25 @@
 
         <input title="Priority on list" type="number" name="priority" class="toggle-priority" min="1" max="5" value={{priority}}>
 
-        <span class="text"><strong>{{username}}</strong></span>
+        <!--<span class="text"><strong>{{username}}</strong></span> -->
+        -  <span class="text"> {{text}}</span>
         <button class="delete">&times;</button>
 
         <div class="row tag">
-            Tags: {{#each tags}}
+            {{#if tags}} Tags: {{/if}}
+            {{#each tags}}
             <span class="tag label label-info js-remove-tag ">
             <span>{{this}}</span>
-            <a><i id="{{../_id}}" class="remove glyphicon glyphicon-remove-sign glyphicon-red"></i></a>
+            <a>
+              <i data-tag-id="{{../_id}}" data-tag="{{this}}"
+              class="remove glyphicon glyphicon-remove-sign glyphicon-red">
+              </i>
+            </a>
             </span>
             {{/each}}
         </div>
 
-        <span class="task-description"> {{text}}</span>
+
 
     </li>
     {{/if}}

@@ -17,10 +17,10 @@ body {
 }
 
 .container {
-  max-width: 600px;
+  max-width: 480px;
   margin: 0 auto;
-  min-height: 100%;
   background: white;
+  padding: 0;
 }
 
 header {
@@ -48,17 +48,17 @@ form {
   position: relative;
 }
 
-.new-task input {
+.new-task input, .search-task {
   box-sizing: border-box;
   padding: 10px 0;
   background: transparent;
   border: none;
   width: 100%;
-  padding-right: 80px;
+  /*padding-right: 80px;*/
   font-size: 1em;
 }
 
-.new-task input:focus{
+.new-task input:focus, .search-task{
   outline: 0;
 }
 
@@ -118,24 +118,22 @@ span.task-description
    margin: 0 auto;
 }
 
-form.edit-tag {
+form {
   display: inline;
 }
 
 /* adapted from http://maxwells.github.io/bootstrap-tags.html */
 .tag {
-  font-size: .75em;
+  font-size: .8em;
   padding: .3em .4em .4em;
   margin: 0 .1em;
 }
 .tag a {
-  color: #bbb;
+  color: #AAA;
   cursor: pointer;
-  opacity: 0.9;
 }
 .tag a .glyphicon-red:hover {
-  opacity: 1.0;
-  color: #F00;
+  color: #E00;
 }
 .tag .remove {
   vertical-align: bottom;
@@ -145,7 +143,8 @@ form.edit-tag {
   margin: 0 0 0 .3em;
 }
 .tag a .glyphicon-red {
-  color: #F63;
+  font-size: 1.1em;
+  color: #900;
   margin-bottom: 2px;
 }
 /* end tags */
@@ -160,7 +159,7 @@ form.edit-tag {
     clear: both;
   }
 
-  .new-task input {
+  .new-task input, .search-task {
     padding-bottom: 5px;
   }
 }

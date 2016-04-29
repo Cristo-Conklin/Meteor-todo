@@ -7,7 +7,9 @@ import {
 import {
     check
 } from 'meteor/check';
-import { Session } from 'meteor/session';
+import {
+    Session
+} from 'meteor/session';
 
 export const Tasks = new Mongo.Collection('tasks');
 
@@ -23,12 +25,13 @@ if (Meteor.isServer) {
                 }, {
                     owner: this.userId
                 }]
-            }, /*{
-                sort: {
-                    priority: -1//, createdAt: -1,
-                }
-            }*/
-          );
+            },
+            /*{
+                           sort: {
+                               priority: -1//, createdAt: -1,
+                           }
+                       }*/
+        );
     });
 }
 
@@ -113,28 +116,41 @@ Meteor.methods({
 
         console.log(Session);
     },
-    'tasks.upsertTag' (taskId, tag){
+    'tasks.upsertTag' (taskId, tag) {
         task = Tasks.findOne(taskId);
-        if (typeof task.tags != 'undefined'){
-          task.tags.push(tag);
-          Tasks.upsert({_id:taskId}, task);
+        console.log(typeof task.tags,task.tags.indexOf(tag), task.tags, taskId, tag);
+
+        if (typeof task.tags != 'undefined') {
+            if (task.tags.indexOf(tag) > -1)  {
+              console.log(tag, " already in ", task.tags);
+            } else {
+              task.tags.push(tag);
+              Tasks.upsert({
+                  _id: taskId
+              }, task);
+            }
         } else {
-          task.tags = [tag];
-          Tasks.upsert({_id:taskId}, task);
+            task.tags = [tag];
+            Tasks.upsert({
+                _id: taskId
+            }, task);
         }
 
         console.log(task);
     },
-    'tasks.removeTag' (taskId, tag){
+    'tasks.removeTag' (taskId, tag) {
         task = Tasks.findOne(taskId);
-        if (typeof task != 'undefined'){
-          task.tags.pop(tag);
-          Tasks.upsert({_id:taskId}, task);
+        console.log('tasks.removeTag', taskId, tag, task.tags.indexOf(tag));
+        if (typeof task != 'undefined' && task.tags.indexOf(tag) > -1) {
+            task.tags.splice(task.tags.indexOf(tag), 1);
+            Tasks.upsert({
+                _id: taskId
+            }, task);
         } else {
-          console.log('assert fail remove tag', taskId, tag);
+            console.log('assert fail remove tag', taskId, tag);
         }
 
-        console.log(task);
+        //console.log(task);
     }
 
 });

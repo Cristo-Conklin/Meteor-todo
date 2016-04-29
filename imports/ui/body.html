@@ -11,9 +11,20 @@
             {{> loginButtons}}
 
             {{#if currentUser}}
-              <form class="new-task">
-                <input type="text" name="text" placeholder="Type to add new tasks" />
-              </form>
+            <div class="row">
+              <div class="col-md-8">
+                <form class="new-task">
+                  <input type="text" name="text" placeholder="Type to add new tasks" />
+                </form>
+              </div>
+              <div class="col-md-4">
+                <form >
+                  <input class="search-task" type="text" name="text" placeholder="Type to search" />
+                </form>
+              </div>
+
+            </div>
+
             {{/if}}
         </header>
 
