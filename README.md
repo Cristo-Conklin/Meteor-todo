@@ -1,4 +1,6 @@
 # Meteor-todo
 
-Official tutorial code. As in https://www.meteor.com/tutorials
-Plan to add priorities and tags to it.
+Based on official tutorial code. As in https://www.meteor.com/tutorials <br> 
+Plan to add tags to it. <br>
+
+Priorities feature added
