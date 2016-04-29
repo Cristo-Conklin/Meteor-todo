@@ -24,6 +24,17 @@
               </div>
 
             </div>
+            <div class="row">
+              {{#each uniqueTags}}
+              <div class="col-xs-3">
+                <label class="checkbox-inline js-tag-check">
+                  <input type="checkbox" id="{{this}}">
+                  <span>{{this}}</span>
+                </label>
+              </div>
+
+              {{/each}}
+            </div>
 
             {{/if}}
         </header>
