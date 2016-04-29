@@ -2,7 +2,11 @@
 
 Based on official tutorial code. As in https://www.meteor.com/tutorials <br>
 
-Priorities and tag feature added.
-Searchbox added
+Added features:
+-Priorities 
+-Tags on tasks and tag filter
+-Searchbox
 
-TODO: view only x tags
+[[https://github.com/Cristo-Conklin/Meteor-todo/blob/master/capture.jpg|alt=app running]]
+
+To-do: check security and do tests
