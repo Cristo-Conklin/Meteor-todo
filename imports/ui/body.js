@@ -5,6 +5,7 @@ import {
 import {
     Tasks
 } from '../api/tasks.js';
+import { Session } from 'meteor/session';
 
 import './task.js';
 import './body.html';
@@ -12,6 +13,7 @@ import './body.html';
 
 Template.body.onCreated(function bodyOnCreated() {
     this.state = new ReactiveDict();
+    Session.set("PrioritySort", 1);
     Meteor.subscribe('tasks');
 });
 
@@ -26,22 +28,26 @@ Template.body.helpers({
                 }
             }, {
                 sort: {
-                    createdAt: -1
+                    priority: Session.get("PrioritySort") //, createdAt: -1,
                 }
             });
         }
         // Otherwise, return all of the tasks
         return Tasks.find({}, {
             sort: {
-                createdAt: -1
+                priority: Session.get("PrioritySort") //, createdAt: -1,
             }
         });
     },
     incompleteCount() {
         return Tasks.find({
-            checked: {
-                $ne: true
-            }
+            $and: [{
+                checked: {
+                    $ne: true
+                }
+            }, {
+                owner: Meteor.userId()
+            }]
         }).count();
     },
 });

@@ -21,3 +21,4 @@ reactive-dict
 accounts-ui
 accounts-password
 practicalmeteor:mocha
+session
