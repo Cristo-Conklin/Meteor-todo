@@ -7,6 +7,6 @@ Added features:
 -Tags on tasks and tag filter
 -Searchbox
 
-[[https://github.com/Cristo-Conklin/Meteor-todo/blob/master/capture.jpg|alt=app running]]
+<img src="https://github.com/Cristo-Conklin/Meteor-todo/blob/master/capture.jpg">
 
 To-do: check security and do tests
