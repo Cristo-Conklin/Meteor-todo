@@ -42,5 +42,17 @@ Template.task.events({
         if (tagText != "")
           Meteor.call('tasks.upsertTag', this._id, tagText);
     },
+    'submit .edit-tag': function(event) {
+        event.preventDefault();
+        tagText = $('#tagText'+ this._id).val();
+        //console.log(tagText, this, event);
+        if (tagText != "")
+          Meteor.call('tasks.upsertTag', this._id, tagText);
+        $('#tagText'+ this._id).val("");
+    },
+    'click .js-remove-tag': function(event) {
+        id = $('i').attr('id');
+        Meteor.call('tasks.removeTag', id, this);
+    }
 
 });

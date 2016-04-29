@@ -110,7 +110,7 @@ Meteor.methods({
             }
         });
 
-        
+
         console.log(Session);
     },
     'tasks.upsertTag' (taskId, tag){
@@ -124,5 +124,17 @@ Meteor.methods({
         }
 
         console.log(task);
+    },
+    'tasks.removeTag' (taskId, tag){
+        task = Tasks.findOne(taskId);
+        if (typeof task != 'undefined'){
+          task.tags.pop(tag);
+          Tasks.upsert({_id:taskId}, task);
+        } else {
+          console.log('assert fail remove tag', taskId, tag);
+        }
+
+        console.log(task);
     }
+
 });

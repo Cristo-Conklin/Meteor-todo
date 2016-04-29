@@ -3,26 +3,27 @@
     <li class="{{#if checked}}checked{{/if}} {{#if private}}private{{/if}}">
 
         <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
-        <button class="toggle-private">
+        <!--  <button class="toggle-private">
             {{#if private}} Private {{else}} Public {{/if}}
-        </button>
+        </button> -->
 
-        <input id="tagText{{_id}}" type="text" name="text" size="4"
-            class="" placeholder="Tag" />
-        <button class="edit-tag">a</button>
+        <form class="edit-tag">
+            <input id="tagText{{_id}}" type="text" name="text" size="4" class="" placeholder="Tag" />
+        </form>
+        <!-- <button class="edit-tag">a</button> -->
 
-        <input id="" type="number" name="priority" class="toggle-priority"
-             min="1" max="5" value={{priority}}>
+        <input title="Priority on list" type="number" name="priority" class="toggle-priority" min="1" max="5" value={{priority}}>
 
         <span class="text"><strong>{{username}}</strong></span>
         <button class="delete">&times;</button>
 
-        <div class="row">
-            <h6>
-            {{#each tags}}
-              {{this}}
+        <div class="row tag">
+            Tags: {{#each tags}}
+            <span class="tag label label-info js-remove-tag ">
+            <span>{{this}}</span>
+            <a><i id="{{../_id}}" class="remove glyphicon glyphicon-remove-sign glyphicon-red"></i></a>
+            </span>
             {{/each}}
-            </h6>
         </div>
 
         <span class="task-description"> {{text}}</span>

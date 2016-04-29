@@ -118,6 +118,38 @@ span.task-description
    margin: 0 auto;
 }
 
+form.edit-tag {
+  display: inline;
+}
+
+/* adapted from http://maxwells.github.io/bootstrap-tags.html */
+.tag {
+  font-size: .75em;
+  padding: .3em .4em .4em;
+  margin: 0 .1em;
+}
+.tag a {
+  color: #bbb;
+  cursor: pointer;
+  opacity: 0.9;
+}
+.tag a .glyphicon-red:hover {
+  opacity: 1.0;
+  color: #F00;
+}
+.tag .remove {
+  vertical-align: bottom;
+  top: 0;
+}
+.tag a {
+  margin: 0 0 0 .3em;
+}
+.tag a .glyphicon-red {
+  color: #F63;
+  margin-bottom: 2px;
+}
+/* end tags */
+
 @media (max-width: 600px) {
   li {
     padding: 12px 15px;
