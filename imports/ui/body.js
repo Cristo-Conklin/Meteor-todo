@@ -39,7 +39,7 @@ Template.body.helpers({
             };
         }
 
-        console.log('q tagsarray', Session.get('tagsArray'), Session.get('tagsArray').length);
+        //console.log('q tagsarray', Session.get('tagsArray'), Session.get('tagsArray').length);
 
         if (Session.get('tagsArray').length > 0) {
             query.tags = {

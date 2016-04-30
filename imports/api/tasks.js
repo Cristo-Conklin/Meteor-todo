@@ -118,7 +118,7 @@ Meteor.methods({
     },
     'tasks.upsertTag' (taskId, tag) {
         task = Tasks.findOne(taskId);
-        console.log(typeof task.tags, task.tags.indexOf(tag), task.tags, taskId, tag);
+        //console.log(typeof task.tags, task.tags.indexOf(tag), task.tags, taskId, tag);
 
         if (typeof task.tags != 'undefined') {
             if (task.tags.indexOf(tag) > -1) {
